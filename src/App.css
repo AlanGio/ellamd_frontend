@@ -43,15 +43,7 @@ main {
 	flex-direction: column;
 	flex-grow: 1;
 	margin: 16px auto 0;
-	width: 95%;
-}
-
-main .export-button {
-	margin: 32px 0;
-}
-
-main .formulation-chooser {
-	margin: 16px 0;
+	width: 90%;
 }
 
 .App .MuiButton-containedPrimary {
@@ -61,10 +53,7 @@ main .formulation-chooser {
 .App .MuiSlider-root {
 	color: #194061;
 	width: 90%;
-}
-
-.container {
-	flex-grow: 1;
+	margin-left: 2%;
 }
 
 .export-container {
