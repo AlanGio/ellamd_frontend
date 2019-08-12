@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Slider from '@material-ui/core/Slider';
+import Form from './components/form/Form';
+import Formulations from './components/formulation/Formulations';
+import Header from './components/header/Header';
+import Ingredients from './components/ingredients/Ingredients';
+
 import Button from '@material-ui/core/Button';
 
 import { getFormulations } from './redux/actions/formulations';
@@ -42,112 +41,43 @@ class App extends Component {
 				orientation: 'landscape'
 			});
 			pdf.addImage(imgData, 'GIF', -35, -25);
-			pdf.save('download.pdf');
+			pdf.save('RecipePatient.pdf');
 		});
 	};
 
 	render() {
 		const { formulations } = this.props;
+		const { selectedFormulationId } = this.state;
 
 		return (
 			<div className="App">
-				<header data-html2canvas-ignore="true">
-					<img
-						src="//static1.squarespace.com/static/5bd9fea58f51305c8a929784/t/5be90e022b6a281d5afe6ef7/1563214052903/?format=1500w"
-						alt="EllaMD"
-					/>
-				</header>
-				<h2>Patient Information</h2>
-
+				<Header />
 				<main>
-					<Grid container spacing={10}>
-						<Grid item md={4}>
-							<TextField
-								id="standard-name"
-								label="Name"
-								margin="normal"
-								InputLabelProps={{
-									shrink: true
-								}}
-							/>
-						</Grid>
-						<Grid item md={4}>
-							<TextField
-								id="standard-name"
-								label="Address"
-								margin="normal"
-								InputLabelProps={{
-									shrink: true
-								}}
-							/>
-						</Grid>
-						<Grid item md={4}>
-							<TextField
-								id="date"
-								label="Birthday"
-								type="date"
-								margin="normal"
-								defaultValue="2017-05-24"
-								InputLabelProps={{
-									shrink: true
-								}}
-							/>
-						</Grid>
-					</Grid>
+					<Form />
 
-					<h2>Choose Formulation</h2>
+					{formulations.loading ? (
+						<h2>Loading</h2>
+					) : (
+						<Fragment>
+							<Formulations
+								formulations={formulations}
+								selectedFormulationId={selectedFormulationId}
+								handleChange={this.handleChange}
+							/>
 
-					<Grid container spacing={10}>
-						<Grid item xs={12} className="formulation-chooser">
-							<InputLabel htmlFor="selectedFormulationId-helper">Formulations</InputLabel>
-							<Select
-								value={this.state.selectedFormulationId}
-								onChange={this.handleChange}
-								inputProps={{
-									name: 'selectedFormulationId',
-									id: 'selectedFormulationId-helper'
-								}}
+							<Ingredients formulations={formulations} />
+
+							<Button
+								variant="contained"
+								color="primary"
+								data-html2canvas-ignore="true"
+								className="export-button"
+								onClick={this.exportPdf}
 							>
-								{formulations.data.map((formulation) => (
-									<MenuItem key={formulation.id} value={formulation.id}>
-										{formulation.name}
-									</MenuItem>
-								))}
-								<MenuItem value={20}>Twenty</MenuItem>
-								<MenuItem value={30}>Thirty</MenuItem>
-							</Select>
-						</Grid>
-					</Grid>
-
-					<Grid container spacing={10}>
-						{formulations.selectedFormulation &&
-							formulations.selectedFormulation.ingredients.map((ingredient) => (
-								<Grid item md={3} key={ingredient.id}>
-									<h3>{ingredient.name}</h3>
-									<h4>{ingredient.description}</h4>
-
-									<Slider
-										defaultValue={Math.round(ingredient.maximum_percentage / 2)}
-										aria-labelledby="discrete-slider"
-										valueLabelDisplay="on"
-										step={1}
-										marks
-										min={ingredient.minimum_percentage}
-										max={ingredient.maximum_percentage}
-									/>
-								</Grid>
-							))}
-					</Grid>
-
-					<Button
-						variant="contained"
-						color="primary"
-						data-html2canvas-ignore="true"
-						className="export-button"
-						onClick={this.exportPdf}
-					>
-						Export Recipe
-					</Button>
+								Export Recipe
+							</Button>
+						</Fragment>
+					)}
 				</main>
 			</div>
 		);
@@ -162,14 +92,15 @@ App.propTypes = {
 	formulations: PropTypes.shape({
 		data: PropTypes.array,
 		error: PropTypes.string,
-		loading: PropTypes.bool
+		loading: PropTypes.bool,
+		selectedFormulation: PropTypes.object
 	})
 };
 
 App.defaultProps = {
 	actions: {},
-	text: {},
-	formulations: {}
+	formulations: {},
+	selectedFormulation: {}
 };
 
 const mapStateToProps = (state) => ({

@@ -20,10 +20,12 @@ h2 {
 	line-height: 32px;
 	margin-top: 24px;
 	height: 30px;
+	color: #194061;
 }
 
 h4 {
 	height: 90px;
+	font-weight: 400;
 }
 
 .MuiSelect-selectMenu {
@@ -35,6 +37,7 @@ h4 {
 	height: 100%;
 	flex-direction: column;
 }
+
 main {
 	display: flex;
 	flex-direction: column;
@@ -49,4 +52,12 @@ main .export-button {
 
 main .formulation-chooser {
 	margin: 16px 0;
+}
+
+.App .MuiButton-containedPrimary {
+	background-color: #194061;
+}
+
+.App .MuiSlider-root {
+	color: #194061;
 }
