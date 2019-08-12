@@ -67,15 +67,17 @@ class App extends Component {
 
 							<Ingredients formulations={formulations} />
 
-							<Button
-								variant="contained"
-								color="primary"
-								data-html2canvas-ignore="true"
-								className="export-button"
-								onClick={this.exportPdf}
-							>
-								Export Recipe
-							</Button>
+							<div className="export-container">
+								<Button
+									variant="contained"
+									color="primary"
+									data-html2canvas-ignore="true"
+									className="export-button"
+									onClick={this.exportPdf}
+								>
+									Export Recipe
+								</Button>
+							</div>
 						</Fragment>
 					)}
 				</main>

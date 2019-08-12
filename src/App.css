@@ -66,3 +66,10 @@ main .formulation-chooser {
 .container {
 	flex-grow: 1;
 }
+
+.export-container {
+	clear: both;
+	display: block;
+	text-align: center;
+	position: relative;
+}
