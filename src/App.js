@@ -9,9 +9,13 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Slider from '@material-ui/core/Slider';
+import Button from '@material-ui/core/Button';
 
 import { getFormulations } from './redux/actions/formulations';
 import { getIngredients } from './redux/actions/ingredients';
+
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 import './App.css';
 
@@ -35,13 +39,24 @@ class App extends Component {
 		console.log(value, id);
 	};
 
+	exportPdf = () => {
+		html2canvas(document.body).then((canvas) => {
+			const imgData = canvas.toDataURL('image/png');
+			var pdf = new jsPDF({
+				orientation: 'landscape'
+			});
+			pdf.addImage(imgData, 'GIF', -35, -25);
+			pdf.save('download.pdf');
+		});
+	};
+
 	render() {
 		const { formulations } = this.props;
 		console.log(formulations);
 
 		return (
 			<div className="App">
-				<header>
+				<header data-html2canvas-ignore="true">
 					<img
 						src="//static1.squarespace.com/static/5bd9fea58f51305c8a929784/t/5be90e022b6a281d5afe6ef7/1563214052903/?format=1500w"
 						alt="EllaMD"
@@ -51,7 +66,7 @@ class App extends Component {
 
 				<main>
 					<Grid container spacing={10}>
-						<Grid item xs={4}>
+						<Grid item md={4}>
 							<TextField
 								id="standard-name"
 								label="Name"
@@ -61,7 +76,7 @@ class App extends Component {
 								}}
 							/>
 						</Grid>
-						<Grid item xs={4}>
+						<Grid item md={4}>
 							<TextField
 								id="standard-name"
 								label="Address"
@@ -71,7 +86,7 @@ class App extends Component {
 								}}
 							/>
 						</Grid>
-						<Grid item xs={4}>
+						<Grid item md={4}>
 							<TextField
 								id="date"
 								label="Birthday"
@@ -88,7 +103,7 @@ class App extends Component {
 					<h2>Choose Formulation</h2>
 
 					<Grid container spacing={10}>
-						<Grid item xs={12}>
+						<Grid item xs={12} className="formulation-chooser">
 							<InputLabel htmlFor="selectedFormulationId-helper">Formulations</InputLabel>
 							<Select
 								value={this.state.selectedFormulationId}
@@ -112,7 +127,7 @@ class App extends Component {
 					<Grid container spacing={10}>
 						{formulations.selectedFormulation &&
 							formulations.selectedFormulation.ingredients.map((ingredient) => (
-								<Grid item xs={3} key={ingredient.id}>
+								<Grid item md={3} key={ingredient.id}>
 									<h3>{ingredient.name}</h3>
 									<h4>{ingredient.description}</h4>
 
@@ -129,6 +144,16 @@ class App extends Component {
 								</Grid>
 							))}
 					</Grid>
+
+					<Button
+						variant="contained"
+						color="primary"
+						data-html2canvas-ignore="true"
+						className="export-button"
+						onClick={this.exportPdf}
+					>
+						Export Recipe
+					</Button>
 				</main>
 			</div>
 		);
