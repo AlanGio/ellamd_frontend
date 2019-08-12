@@ -128,7 +128,6 @@ class App extends Component {
 
 									<Slider
 										defaultValue={Math.round(ingredient.maximum_percentage / 2)}
-										getAriaValueText={(e) => this.valuetext(e, ingredient.id)}
 										aria-labelledby="discrete-slider"
 										valueLabelDisplay="on"
 										step={1}
