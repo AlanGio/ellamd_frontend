@@ -22,6 +22,7 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				...action.payload,
+				selectedFormulation: action.payload.data[0],
 				loading: false
 			};
 		case GET_FORMULATIONS_ERROR:

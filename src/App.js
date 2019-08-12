@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Slider from '@material-ui/core/Slider';
 
 import { getFormulations } from './redux/actions/formulations';
 import { getIngredients } from './redux/actions/ingredients';
@@ -110,6 +111,16 @@ class App extends Component {
 								<Grid item xs={3} key={ingredient.id}>
 									<h3>{ingredient.name}</h3>
 									<h4>{ingredient.description}</h4>
+
+									<Slider
+										defaultValue={Math.round(ingredient.maximum_percentage / 2)}
+										aria-labelledby="discrete-slider"
+										valueLabelDisplay="auto"
+										step={1}
+										marks
+										min={ingredient.minimum_percentage}
+										max={ingredient.maximum_percentage}
+									/>
 								</Grid>
 							))}
 					</Grid>
