@@ -1,34 +1,38 @@
 {
-  "name": "test-agile",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.3.2",
-    "axios": "^0.19.0",
-    "node-sass": "^4.12.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^7.1.0",
-    "react-scripts": "1.1.1",
-    "redux": "^4.0.4",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
-  },
-  "scripts": {
-    "scss": "node-sass --watch assets/scss -o assets/css",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.2",
-    "prettier": "1.18.2"
-  }
+	"name": "test-agile",
+	"version": "0.1.0",
+	"private": true,
+	"engines": {
+		"npm": "6.9.0",
+		"node": "10.16.0"
+	},
+	"dependencies": {
+		"@material-ui/core": "^4.3.2",
+		"axios": "^0.19.0",
+		"node-sass": "^4.12.0",
+		"prop-types": "^15.7.2",
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0",
+		"react-redux": "^7.1.0",
+		"react-scripts": "1.1.1",
+		"redux": "^4.0.4",
+		"redux-logger": "^3.0.6",
+		"redux-thunk": "^2.3.0"
+	},
+	"scripts": {
+		"scss": "node-sass --watch assets/scss -o assets/css",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"devDependencies": {
+		"eslint": "^5.16.0",
+		"eslint-config-airbnb": "^17.1.1",
+		"eslint-plugin-import": "^2.18.2",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-prettier": "^3.1.0",
+		"eslint-plugin-react": "^7.14.2",
+		"prettier": "1.18.2"
+	}
 }
