@@ -35,10 +35,6 @@ class App extends Component {
 		actions.getIngredients({ id: event.target.value, formulations });
 	};
 
-	valuetext = (value, id) => {
-		console.log(value, id);
-	};
-
 	exportPdf = () => {
 		html2canvas(document.body).then((canvas) => {
 			const imgData = canvas.toDataURL('image/png');
@@ -52,7 +48,6 @@ class App extends Component {
 
 	render() {
 		const { formulations } = this.props;
-		console.log(formulations);
 
 		return (
 			<div className="App">
