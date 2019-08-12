@@ -1,4 +1,4 @@
-# Simple text editor
+# Ella MD Recipe Generator
 
 ## Initial setup
 Run `npm install` in order to setup application

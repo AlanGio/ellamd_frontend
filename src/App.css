@@ -43,7 +43,7 @@ main {
 	flex-direction: column;
 	flex-grow: 1;
 	margin: 16px auto 0;
-	width: 100%;
+	width: 95%;
 }
 
 main .export-button {
@@ -60,4 +60,9 @@ main .formulation-chooser {
 
 .App .MuiSlider-root {
 	color: #194061;
+	width: 90%;
+}
+
+.container {
+	flex-grow: 1;
 }

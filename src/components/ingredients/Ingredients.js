@@ -6,7 +6,7 @@ import Slider from '@material-ui/core/Slider';
 
 const Ingredients = ({ formulations }) => (
 	<Fragment>
-		<Grid container spacing={10}>
+		<Grid container spacing={2}>
 			{formulations.selectedFormulation &&
 				formulations.selectedFormulation.ingredients.map((ingredient) => (
 					<Grid item md={3} key={ingredient.id}>

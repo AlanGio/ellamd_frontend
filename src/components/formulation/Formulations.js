@@ -10,7 +10,7 @@ const Formulations = ({ formulations, selectedFormulationId, handleChange }) => 
 	<Fragment>
 		<h2>Choose Formulation</h2>
 
-		<Grid container spacing={10}>
+		<Grid container spacing={2}>
 			<Grid item xs={12} className="formulation-chooser">
 				<InputLabel htmlFor="selectedFormulationId-helper">Formulations</InputLabel>
 				<Select
