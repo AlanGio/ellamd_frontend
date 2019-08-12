@@ -8,6 +8,7 @@ import Formulations from './components/formulation/Formulations';
 import Header from './components/header/Header';
 import Ingredients from './components/ingredients/Ingredients';
 
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 import { getFormulations } from './redux/actions/formulations';
@@ -56,7 +57,11 @@ class App extends Component {
 					<Form />
 
 					{formulations.loading ? (
-						<h2>Loading</h2>
+						<Grid container spacing={0}>
+							<Grid item xs={12}>
+								<h2>Loading</h2>
+							</Grid>
+						</Grid>
 					) : (
 						<Fragment>
 							<Formulations
@@ -67,17 +72,19 @@ class App extends Component {
 
 							<Ingredients formulations={formulations} />
 
-							<div className="export-container">
-								<Button
-									variant="contained"
-									color="primary"
-									data-html2canvas-ignore="true"
-									className="export-button"
-									onClick={this.exportPdf}
-								>
-									Export Recipe
-								</Button>
-							</div>
+							<Grid container spacing={2}>
+								<Grid item xs={12}>
+									<Button
+										variant="contained"
+										color="primary"
+										data-html2canvas-ignore="true"
+										className="export-button"
+										onClick={this.exportPdf}
+									>
+										Export Recipe
+									</Button>
+								</Grid>
+							</Grid>
 						</Fragment>
 					)}
 				</main>
