@@ -23,6 +23,11 @@ h2 {
 	margin-top: 0;
 	line-height: 32px;
 	margin-top: 24px;
+	height: 30px;
+}
+
+h4 {
+	height: 90px;
 }
 
 .App {

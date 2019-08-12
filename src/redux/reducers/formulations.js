@@ -19,6 +19,7 @@ export default (state = initialState, action) => {
 				loading: true
 			};
 		case GET_FORMULATIONS_SUCCESS:
+			console.log(action.payload);
 			return {
 				...state,
 				...action.payload,

@@ -31,9 +31,13 @@ class App extends Component {
 		actions.getIngredients({ id: event.target.value, formulations });
 	};
 
+	valuetext = (value, id) => {
+		console.log(value, id);
+	};
+
 	render() {
 		const { formulations } = this.props;
-		console.log(formulations.selectedFormulation);
+		console.log(formulations);
 
 		return (
 			<div className="App">
@@ -114,8 +118,9 @@ class App extends Component {
 
 									<Slider
 										defaultValue={Math.round(ingredient.maximum_percentage / 2)}
+										getAriaValueText={(e) => this.valuetext(e, ingredient.id)}
 										aria-labelledby="discrete-slider"
-										valueLabelDisplay="auto"
+										valueLabelDisplay="on"
 										step={1}
 										marks
 										min={ingredient.minimum_percentage}
