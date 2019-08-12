@@ -41,7 +41,7 @@ class App extends Component {
 			var pdf = new jsPDF({
 				orientation: 'landscape'
 			});
-			pdf.addImage(imgData, 'GIF', -35, -25);
+			pdf.addImage(imgData, 'GIF', 0, 0);
 			pdf.save('RecipePatient.pdf');
 		});
 	};
