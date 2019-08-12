@@ -1,0 +1,25 @@
+#control-panel {
+    background-color: #fff;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 5px;
+}
+#format-actions {
+    width: 240px;
+    margin-right: 360px;
+}
+
+.format-action-color.red {
+    background-color: red;
+}
+.format-action-color.blue {
+    background-color: blue;
+}
+.format-action-color.yellow {
+    background-color: yellow;
+}
+.format-action-color.green {
+    background-color: green;
+}
